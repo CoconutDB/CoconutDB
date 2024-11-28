@@ -37,7 +37,7 @@ async function createModel() {
     }
 
     const modelContent = `
-const Database = require('coconutdb/src/database'); // Path to the database.js file
+const Database = require('coconutdb/src/database'); 
     
 class ${modelName}Model {
     constructor() {
