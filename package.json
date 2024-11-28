@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Non-Relational Document-Oriented Database",
   "main": "src/index.js",
-  "type": "module",
+  "type": "commonjs",
   "bin": {
     "create-model": "./src/index.js"
   },
@@ -25,7 +25,8 @@
   "homepage": "https://github.com/CoconutDB/CoconutDB#readme",
   "dependencies": {
     "fs-extra": "^11.2.0",
-    "yargs": "^17.7.2",
-    "inquirer": "^9.0.0" 
+    "inquirer": "^6.0.0",
+    "uuid": "^11.0.3",
+    "yargs": "^17.7.2"
   }
 }

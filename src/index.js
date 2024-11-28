@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import inquirer from "inquirer";
-import fs from "fs-extra";
-import path from "path";
+const inquirer = require('inquirer');
+const fs = require('fs-extra');
+const path = require('path');
 
 async function createModel() {
     const modelDir = `./models`;
