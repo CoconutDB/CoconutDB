@@ -1,3 +1,3 @@
 # CoconutDB
 
-![Alt text](./assest/CoconutDBlogobg.png)
+![Alt text](./assest/CoconutDBnobg.png)
