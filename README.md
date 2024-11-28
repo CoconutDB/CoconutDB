@@ -5,6 +5,13 @@
 </p>
 
 
+## About
+
+- South Asian and Sri Lankan First NoSQL Database
+- document oriented database
+- Development Start: 28 November 2024
+- Developers: Jehan Weerasuriya
+
 
 Coconut DB is an emerging NoSQL document-oriented database currently in its initial development phase. Designed to be lightweight and developer-friendly, Coconut DB aims to provide a simple yet powerful solution for handling JSON-like documents. At its core, it features a basic insert function, allowing users to add data efficiently into the database.
 
