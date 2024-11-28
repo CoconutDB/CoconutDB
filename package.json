@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/CoconutDB/CoconutDB/issues"
   },
-  "homepage": "https://github.com/CoconutDB/CoconutDB#readme"
+  "homepage": "https://github.com/CoconutDB/CoconutDB#readme",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "yargs": "^17.7.2"
+  }
 }
