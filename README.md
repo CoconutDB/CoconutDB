@@ -7,8 +7,7 @@
 
 ## About
 
-- South Asian and Sri Lankan First NoSQL Database
-- document oriented database
+- South Asian and Sri Lankan First NoSQL Database and document-oriented database
 - Development Start: 28 November 2024
 - Developers: Jehan Weerasuriya
 
