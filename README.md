@@ -1,4 +1,5 @@
 # CoconutDB
 
-<center><img src="./assest/CoconutDBnobg.png" alt="Alt text" width="auto" height="300"></center>
-
+<p align="center">
+  <img src="./assest/CoconutDBnobg.png" alt="Alt text" height="300">
+</p>
