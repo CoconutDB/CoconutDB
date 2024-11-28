@@ -1,3 +1,4 @@
 # CoconutDB
 
-![Alt text](./assest/CoconutDBnobg.png)
+<img src="./assest/CoconutDBnobg.png" alt="Alt text" width="500" height="300">
+
