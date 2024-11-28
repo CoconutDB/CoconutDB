@@ -1,8 +1,12 @@
 {
   "name": "coconutdb",
   "version": "1.0.0",
-  "description": "Non Relational Document Oriented Database",
-  "main": "index.js",
+  "description": "Non-Relational Document-Oriented Database",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "create-model": "./src/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +25,7 @@
   "homepage": "https://github.com/CoconutDB/CoconutDB#readme",
   "dependencies": {
     "fs-extra": "^11.2.0",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "inquirer": "^9.0.0" 
   }
 }

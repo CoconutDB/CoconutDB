@@ -1,82 +1,80 @@
-const fs = require('fs-extra');
-const path = require('path');
-const yargs = require('yargs');
+#!/usr/bin/env node
 
-// Define the location to save the model files (this could be within a 'models' directory)
-const modelsDir = path.join(process.cwd(), 'models');
+import inquirer from "inquirer";
+import fs from "fs-extra";
+import path from "path";
 
-// Ensure the models directory exists
-fs.ensureDirSync(modelsDir);
+async function createModel() {
+    const modelDir = `./models`;
 
-// Function to create the model
-const createModel = (modelName) => {
-  if (!modelName) {
-    console.error("Please provide a model name.");
-    process.exit(1);
-  }
+    // Ensure the models directory exists
+    fs.ensureDirSync(modelDir);
 
-  // Define the model file path
-  const modelFilePath = path.join(modelsDir, `${modelName}.js`);
+    const { modelName } = await inquirer.prompt([
+        { type: "input", name: "modelName", message: "Enter the model name:" },
+    ]);
 
-  // Check if the file already exists
-  if (fs.existsSync(modelFilePath)) {
-    console.log(`Model "${modelName}" already exists.`);
-    return;
-  }
+    const modelFilePath = path.join(modelDir, `${modelName}.js`);
 
-  // Create the model file content
-  const modelContent = `
-const Database = require('../database/database');
+    // Check if the model already exists
+    if (fs.existsSync(modelFilePath)) {
+        const { action } = await inquirer.prompt([
+            {
+                type: "list",
+                name: "action",
+                message: `Model "${modelName}" already exists. What would you like to do?`,
+                choices: [
+                    { name: "Overwrite the existing model", value: "overwrite" },
+                    { name: "Cancel", value: "cancel" },
+                ],
+            },
+        ]);
 
+        if (action === "cancel") {
+            console.log(`Action canceled. No changes made.`);
+            return;
+        }
+    }
+
+    const modelContent = `
+const Database = require('coconutdb/src/database'); // Path to the database.js file
+    
 class ${modelName}Model {
-  constructor() {
-    this.collectionName = '${modelName.toLowerCase()}';
-  }
+    constructor() {
+       this.collectionName = '${modelName.toLowerCase()}';
+    }
+    
+    async create(document) {
+       return await Database.create(this.collectionName, document);
+    }
+    
+    async findAll() {
+       return await Database.findAll(this.collectionName);
+    }
+    
+    async findById(id) {
+       return await Database.findById(this.collectionName, id);
+    }
+    
+    async updateById(id, updates) {
+       return await Database.updateById(this.collectionName, id, updates);
+    }
+    
+    async deleteById(id) {
+       return await Database.deleteById(this.collectionName, id);
+    }
+}
+    
+    module.exports = new ${modelName}Model();
+    `;
 
-  async create(document) {
-    return await Database.create(this.collectionName, document);
-  }
-
-  async findAll() {
-    return await Database.findAll(this.collectionName);
-  }
-
-  async findById(id) {
-    return await Database.findById(this.collectionName, id);
-  }
-
-  async updateById(id, updates) {
-    return await Database.updateById(this.collectionName, id, updates);
-  }
-
-  async deleteById(id) {
-    return await Database.deleteById(this.collectionName, id);
-  }
+    // Write the model file
+    fs.writeFileSync(modelFilePath, modelContent);
+    console.log(`Model "${modelName}" created successfully at ${modelFilePath}!`);
 }
 
-module.exports = new ${modelName}Model();
-  `;
+async function main() {
+    await createModel();
+}
 
-  // Write the model content to a file
-  fs.writeFileSync(modelFilePath, modelContent, 'utf-8');
-
-  console.log(`Model "${modelName}" has been created at ${modelFilePath}`);
-};
-
-// Parse command line arguments using yargs
-yargs.command(
-  'Modelcreate <modelName>',
-  'Create a new model',
-  (yargs) => {
-    yargs.positional('modelName', {
-      describe: 'The name of the model to create',
-      type: 'string',
-    });
-  },
-  (argv) => {
-    createModel(argv.modelName);
-  }
-);
-
-// Parse the command-line input
-yargs.parse();
+main();
