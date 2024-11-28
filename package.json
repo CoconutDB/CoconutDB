@@ -1,0 +1,22 @@
+{
+  "name": "coconutdb",
+  "version": "1.0.0",
+  "description": "Non Relational Document Oriented Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoconutDB/CoconutDB.git"
+  },
+  "keywords": [
+    "NoSQL"
+  ],
+  "author": "jehankandy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoconutDB/CoconutDB/issues"
+  },
+  "homepage": "https://github.com/CoconutDB/CoconutDB#readme"
+}
