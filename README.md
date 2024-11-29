@@ -82,7 +82,35 @@ module.exports = new userModel();
 
 ```js
 
+const UserModel = require("../models/User");
 
+const UserController = {
+    CreateUser: async (req, res) => {
+        try{
+            console.log(req.body)
+
+            const NewUser = await UserModel.create({
+                name: req.body.name,
+                email: req.body.email,
+                age: req.body.age
+            })
+
+            // const NewUser = await UserModel.create(req.body)
+
+            if(NewUser){
+                return res.json({ Status: "Success"})
+            }
+            else{
+                return res.json({ Error: "Internal Server Error"})
+            }
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+};
+
+module.exports = UserController;
 
 
 ```
