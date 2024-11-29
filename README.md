@@ -114,7 +114,7 @@ module.exports = UserController;
 
 
 ```
-
+- using React + Vite + TailwindCSS as Frontend
 
 
 ## Core Features
