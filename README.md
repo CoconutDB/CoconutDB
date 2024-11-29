@@ -24,8 +24,60 @@ This early-stage database focuses on foundational functionality, with plans to e
 
 npm i coconutdb
 
+```
+
+- run following command
+
+```js
+
+npx create-model
 
 ```
+
+- then enter name that you need to create model
+
+- after doing it in server folder you can see `models` 
+- in `models` create a file with you entered name 
+- - eg: User.js
+
+- example file for `user` model
+
+```js
+
+const Database = require('coconutdb/src/database'); 
+    
+class userModel {
+    constructor() {
+       this.collectionName = 'user';
+    }
+    
+    async create(document) {
+       return await Database.create(this.collectionName, document);
+    }
+    
+    async findAll() {
+       return await Database.findAll(this.collectionName);
+    }
+    
+    async findById(id) {
+       return await Database.findById(this.collectionName, id);
+    }
+    
+    async updateById(id, updates) {
+       return await Database.updateById(this.collectionName, id, updates);
+    }
+    
+    async deleteById(id) {
+       return await Database.deleteById(this.collectionName, id);
+    }
+}
+    
+module.exports = new userModel();
+    
+
+
+```
+
 
 
 ## Core Features
