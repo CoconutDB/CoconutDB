@@ -16,6 +16,17 @@ Coconut DB is an emerging NoSQL document-oriented database currently in its init
 
 This early-stage database focuses on foundational functionality, with plans to expand into a full-fledged system supporting CRUD operations, advanced querying, and indexing. As development progresses, Coconut DB will incorporate features that cater to modern application needs, emphasizing ease of use and performance. Ideal for small-scale projects and experimentation, Coconut DB is the starting point of a vision to redefine simplicity in NoSQL databases.
 
+## How to use
+
+- install via node package manager (NPM)
+
+```js
+
+npm i coconutdb
+
+
+```
+
 
 ## Core Features
 
@@ -26,7 +37,6 @@ This early-stage database focuses on foundational functionality, with plans to e
 ### v1.0.0-beta1 28 November 2024
 
 - still in development stage
-
 
 ## Developers
 
