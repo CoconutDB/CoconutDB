@@ -74,6 +74,15 @@ class userModel {
     
 module.exports = new userModel();
     
+```
+
+### use in Controller (Nodejs + ExpressJS + MVC)
+
+- in `controller/UserController.js`
+
+```js
+
+
 
 
 ```
