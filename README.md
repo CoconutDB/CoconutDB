@@ -28,3 +28,8 @@ This early-stage database focuses on foundational functionality, with plans to e
 - still in development stage
 
 
+## Developers
+
+- Jehan Weerasuriaya
+- - [LinkedIn](https://www.linkedin.com/in/jehanweerasuriya/)
+
