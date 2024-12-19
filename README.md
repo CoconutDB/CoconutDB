@@ -116,16 +116,170 @@ module.exports = UserController;
 ```
 - using React + Vite + TailwindCSS as Frontend
 
+<hr>
+
+## To use CoconutDB Web
+
+### How to use with CoconutDB Web
+
+- Access to CoconutDB Web v1.0.0-alpha Verison using link
+
+[CoconutDB Alpha Version](https://coconutdbweb.vercel.app/)
+
+<b>Important : </b> this web version is Available for limited time
+
+- You must do following things to do for access CoconutDB web Version
+
+- - Update User entry file on Backend Server  (server.js/index.js/app.js)
+- - Default entry file
+
+```js
+const express = require('express');
+require('dotenv').config();
+const cors = require('cors');
+const path = require('path'); 
+const bodyParser = require('body-parser');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+const UserRoute = require('./route/UserRoute')
+const ProductRoute = require('./route/ProductRoute')
+
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/user', UserRoute)
+app.use('/product', ProductRoute)
+
+app.get('/', (req, res) => {
+    res.send(`Server running on port ${PORT}`);
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+```
+
+- - adding following lines 
+
+```js
+
+const DBRoute = require('./route/DBRoute') 
+app.use('/config', DBRoute)
+
+
+```
+
+- - Updated entry file
+
+```js
+
+const express = require('express');
+require('dotenv').config();
+const cors = require('cors');
+const path = require('path'); 
+const bodyParser = require('body-parser');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+const UserRoute = require('./route/UserRoute')
+const DBRoute = require('./route/DBRoute') // newly added line
+const ProductRoute = require('./route/ProductRoute')
+
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/user', UserRoute)
+app.use('/product', ProductRoute) // newly added line
+app.use('/config', DBRoute)
+
+app.get('/', (req, res) => {
+    res.send(`Server running on port ${PORT}`);
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+```
+
+- After done this 
+- - Create file in route folder called `DBRoute.js`
+- - and copy following content and past there
+
+```js
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
+const router = express.Router();
+
+router.get('/dbconfig', async (req, res) => {
+    try{
+        const dataDir = path.join(__dirname, '../data');
+
+        fs.readdir(dataDir, (err, files) => {
+            if (err) {
+              res.status(500).json({ error: 'Error reading the data folder' });
+              return;
+            }
+            const jsonFiles = files.filter(file => file.endsWith('.json'));
+            res.json(jsonFiles);
+        });
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+
+router.get('/documents/:file', async (req, res) => {
+    try{
+        const { file } = req.params;
+        const filePath = path.join(__dirname, '../data', file); 
+      
+        if (fs.existsSync(filePath)) {
+          res.sendFile(filePath);
+        } else {
+          res.status(404).json({ error: 'File not found' });
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+module.exports = router;
+
+```
+
+<hr>
 
 ## Core Features
 
+- CoconutDB Web Alpha Version (Available for Limited time)
 - still in development stage
+
 
 ## Releases
 
-### v1.0.0-beta1 28 November 2024
+### v1.0.0 28 November 2024
 
 - still in development stage
+
+### v2.0.0-beta1 19 December 2024
+
+- still in development stage
+- Access to CoconutDB Web Alpha Verison (Available for Limited time)
 
 ## Developers
 
