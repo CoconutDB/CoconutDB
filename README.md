@@ -272,9 +272,14 @@ module.exports = router;
 
 ## Releases
 
-### v1.0.0-beta1 28 November 2024
+### v1.0.0 28 November 2024
 
 - still in development stage
+
+### v2.0.0-beta1 19 December 2024
+
+- still in development stage
+- Access to CoconutDB Web Alpha Verison (Available for Limited time)
 
 ## Developers
 
