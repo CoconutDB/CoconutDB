@@ -122,7 +122,7 @@ module.exports = UserController;
 
 ### How to use with CoconutDB Web
 
-- Access to CoconutDB v1.0.0-alpha Verison using link
+- Access to CoconutDB Web v1.0.0-alpha Verison using link
 
 [CoconutDB Alpha Version](https://coconutdbweb.vercel.app/)
 
@@ -189,7 +189,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const UserRoute = require('./route/UserRoute')
-const DBRoute = require('./route/DBRoute') 
+const DBRoute = require('./route/DBRoute') // newly added line
 const ProductRoute = require('./route/ProductRoute')
 
 app.use(cors());
@@ -198,7 +198,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/user', UserRoute)
-app.use('/product', ProductRoute)
+app.use('/product', ProductRoute) // newly added line
 app.use('/config', DBRoute)
 
 app.get('/', (req, res) => {
@@ -209,6 +209,56 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+```
+
+- After done this 
+- - Create file in route folder called `DBRoute`
+- - and copy following content and past there
+
+```js
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+
+const router = express.Router();
+
+router.get('/dbconfig', async (req, res) => {
+    try{
+        const dataDir = path.join(__dirname, '../data');
+
+        fs.readdir(dataDir, (err, files) => {
+            if (err) {
+              res.status(500).json({ error: 'Error reading the data folder' });
+              return;
+            }
+            const jsonFiles = files.filter(file => file.endsWith('.json'));
+            res.json(jsonFiles);
+        });
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+
+router.get('/documents/:file', async (req, res) => {
+    try{
+        const { file } = req.params;
+        const filePath = path.join(__dirname, '../data', file); 
+      
+        if (fs.existsSync(filePath)) {
+          res.sendFile(filePath);
+        } else {
+          res.status(404).json({ error: 'File not found' });
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+module.exports = router;
 
 ```
 
