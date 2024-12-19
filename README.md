@@ -213,7 +213,7 @@ app.listen(PORT, () => {
 ```
 
 - After done this 
-- - Create file in route folder called `DBRoute`
+- - Create file in route folder called `DBRoute.js`
 - - and copy following content and past there
 
 ```js
