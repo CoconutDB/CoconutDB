@@ -116,6 +116,8 @@ module.exports = UserController;
 ```
 - using React + Vite + TailwindCSS as Frontend
 
+<hr>
+
 ## To use CoconutDB Web
 
 ### How to use with CoconutDB Web
@@ -124,12 +126,15 @@ module.exports = UserController;
 
 [CoconutDB Alpha Version](https://coconutdbweb.vercel.app/)
 
-<b>Important : </b> this web version is availabe for limited time
+<b>Important : </b> this web version is Available for limited time
 
+<hr>
 
 ## Core Features
 
+- CoconutDB Alpha Version (Available for Limited time)
 - still in development stage
+
 
 ## Releases
 
