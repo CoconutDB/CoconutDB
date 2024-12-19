@@ -128,11 +128,50 @@ module.exports = UserController;
 
 <b>Important : </b> this web version is Available for limited time
 
+- You must do following things to do for access CoconutDB web Version
+
+- - Update User entry file on Backend Server  (server.js/index.js/app.js)
+
+```js
+const express = require('express');
+require('dotenv').config();
+const cors = require('cors');
+const path = require('path'); 
+const bodyParser = require('body-parser');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+const UserRoute = require('./route/UserRoute')
+const ProductRoute = require('./route/ProductRoute')
+
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/user', UserRoute)
+app.use('/product', ProductRoute)
+
+app.get('/', (req, res) => {
+    res.send(`Server running on port ${PORT}`);
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+
+
+
+```
+
 <hr>
 
 ## Core Features
 
-- CoconutDB Alpha Version (Available for Limited time)
+- CoconutDB Web Alpha Version (Available for Limited time)
 - still in development stage
 
 
