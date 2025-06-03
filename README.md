@@ -59,7 +59,7 @@ npm i joi
 ```js
 
     const Joi = require('joi');
-    const Model = require('coconutdbv3');
+    const Model = require('coconutdb');
 
     const studentSchema = Joi.object({
         name: Joi.string().required(),
