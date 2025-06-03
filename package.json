@@ -1,12 +1,9 @@
 {
   "name": "coconutdb",
-  "version": "2.0.0",
+  "version": "3.0.0-beta",
   "description": "Non-Relational Document-Oriented Database",
-  "main": "src/index.js",
+  "main": "src/model.js",
   "type": "commonjs",
-  "bin": {
-    "create-model": "./src/index.js"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,7 +12,9 @@
     "url": "git+https://github.com/CoconutDB/CoconutDB.git"
   },
   "keywords": [
-    "NoSQL"
+    "NoSQL",
+    "DocumentDatabase",
+    "CoconutDB"
   ],
   "author": "jehankandy",
   "license": "ISC",
@@ -24,9 +23,10 @@
   },
   "homepage": "https://github.com/CoconutDB/CoconutDB#readme",
   "dependencies": {
-    "fs-extra": "^11.2.0",
-    "inquirer": "^6.0.0",
-    "uuid": "^11.0.3",
-    "yargs": "^17.7.2"
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.3.0",
+    "joi": "^17.13.3",
+    "path": "^0.12.7",
+    "uuid": "^11.1.0"
   }
 }

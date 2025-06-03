@@ -11,10 +11,21 @@
 - Development Start: 28 November 2024
 - Developers: Jehan Weerasuriya
 
+CoconutDB is a lightweight, developer-friendly NoSQL database that stores data in JSON files — perfect for small-scale applications, experiments, or educational projects.
 
-Coconut DB is an emerging NoSQL document-oriented database currently in its initial development phase. Designed to be lightweight and developer-friendly, Coconut DB aims to provide a simple yet powerful solution for handling JSON-like documents. At its core, it features a basic insert function, allowing users to add data efficiently into the database.
 
-This early-stage database focuses on foundational functionality, with plans to expand into a full-fledged system supporting CRUD operations, advanced querying, and indexing. As development progresses, Coconut DB will incorporate features that cater to modern application needs, emphasizing ease of use and performance. Ideal for small-scale projects and experimentation, Coconut DB is the starting point of a vision to redefine simplicity in NoSQL databases.
+- 🚀 First released: 28 November 2024
+
+- 🧹 Document-oriented & NoSQL
+
+- ⚙️ Minimal configuration required
+
+- 🔧 Built-in CLI to generate models
+
+- 🌍 Designed for local file-based persistence
+
+- 📦 Latest version: v3.0.0
+
 
 ## How to use
 
